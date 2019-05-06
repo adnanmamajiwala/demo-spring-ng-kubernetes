@@ -29,7 +29,7 @@ public class AddressController {
 
     @GetMapping("/search")
     public Address getAddressByPersonId(@RequestParam("personId") Long id) {
-        return repository.findById(id)
+        return repository.findByPersonId(id)
                 .orElseThrow(() -> new AddressNotFoundException(format("Could not find Address by person id [%d]", id)));
     }
 
