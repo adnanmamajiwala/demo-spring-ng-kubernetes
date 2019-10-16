@@ -1,0 +1,3 @@
+rootProject.name = 'employee-ui'
+
+include 'server', 'client'
