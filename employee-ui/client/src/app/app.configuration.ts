@@ -13,7 +13,7 @@ export function initApp(http: HttpClient) {
         case 'dev':
           configuration = new ConfigurationDev();
           break;
-        case 'prpd':
+        case 'prod':
           configuration = new ConfigurationProd();
           break;
         default:
