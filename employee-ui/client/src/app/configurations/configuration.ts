@@ -1,3 +1,3 @@
-export interface Configuration {
-  employees_url: string;
+export abstract class Configuration {
+  abstract readonly employees_url: string;
 }
