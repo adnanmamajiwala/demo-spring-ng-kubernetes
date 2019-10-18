@@ -1,7 +1,8 @@
 package com.example.server;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +14,15 @@ public class EnvController {
     private String profile;
 
     @GetMapping("/profile")
-    public String profile() throws JSONException {
-        JSONObject object = new JSONObject();
-        object.put("profile", profile);
-        return object.toString();
+    public Env profile() {
+        return new Env(profile);
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    private static class Env {
+        String profile;
     }
 
 }
