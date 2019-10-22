@@ -1,10 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: "Ingress"
 metadata:
-  name: "my-kube-apps-test"
+  name: "my-ingress"
   namespace: "default"
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: "my-kube-apps"
+    kubernetes.io/ingress.global-static-ip-name: "apps-cluster-ip"
 spec:
   rules:
     - http:
@@ -13,16 +13,23 @@ spec:
               serviceName: address-service
               servicePort: 8080
       host: address.innoventing.net
-    - http:
-        paths:
-          - backend:
-              serviceName: person-service
-              servicePort: 8080
-      host: person.innoventing.net
-    - http:
-        paths:
-          - backend:
-              serviceName: employee-service
-              servicePort: 8080
-      host: employee.innoventing.net
+#    - http:
+#        paths:
+#          - backend:
+#              serviceName: person-service
+#              servicePort: 8080
+#      host: person.innoventing.net
+#    - http:
+#        paths:
+#          - backend:
+#              serviceName: employee-service
+#              servicePort: 8080
+#      host: employee.innoventing.net
+#    - http:
+#        paths:
+#          - backend:
+#              serviceName: employee-app-service
+#              servicePort: 8080
+#      host: employee-app.innoventing.net
+
 
