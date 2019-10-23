@@ -28,7 +28,7 @@ spec:
     - http:
         paths:
           - backend:
-              serviceName: employee-app-service
+              serviceName: frontend-service
               servicePort: 8080
       host: employee-app.innoventing.net
 
