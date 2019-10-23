@@ -13,23 +13,23 @@ spec:
               serviceName: address-service
               servicePort: 8080
       host: address.innoventing.net
-#    - http:
-#        paths:
-#          - backend:
-#              serviceName: person-service
-#              servicePort: 8080
-#      host: person.innoventing.net
-#    - http:
-#        paths:
-#          - backend:
-#              serviceName: employee-service
-#              servicePort: 8080
-#      host: employee.innoventing.net
-#    - http:
-#        paths:
-#          - backend:
-#              serviceName: employee-app-service
-#              servicePort: 8080
-#      host: employee-app.innoventing.net
+    - http:
+        paths:
+          - backend:
+              serviceName: person-service
+              servicePort: 8080
+      host: person.innoventing.net
+    - http:
+        paths:
+          - backend:
+              serviceName: employee-service
+              servicePort: 8080
+      host: employee.innoventing.net
+    - http:
+        paths:
+          - backend:
+              serviceName: employee-app-service
+              servicePort: 8080
+      host: employee-app.innoventing.net
 
 
