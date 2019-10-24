@@ -6,6 +6,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "apps-cluster-ip"
 spec:
+  tls:
+    - secretName: "innoventing-cert"
   rules:
     - http:
         paths:
