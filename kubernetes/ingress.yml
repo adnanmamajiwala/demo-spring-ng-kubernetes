@@ -4,22 +4,22 @@ metadata:
   name: "innoventing-apps"
   namespace: "default"
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: "apps-cluster-ip"
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   tls:
     - secretName: "innoventing-cert"
   rules:
-#    - http:
+#    - host: employee.innoventing.net
+#      http:
 #        paths:
-#          - backend:
-#              serviceName: employee-service
-#              servicePort: 8080
-#      host: employee.innoventing.net
-    - http:
+#              - backend:
+#        serviceName: employee-service
+#        servicePort: 8080
+    - host: app.innoventing.net
+      http:
         paths:
           - backend:
               serviceName: employee-app-service
               servicePort: 8080
-      host: app.innoventing.net
-
 

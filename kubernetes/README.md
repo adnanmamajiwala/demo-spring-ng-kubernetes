@@ -34,9 +34,20 @@ For detail helm instructions visit the [HELM's website](https://helm.sh/docs/hel
 
 1. To install helm in your local macOS  `brew install kubernetes-helm`
 2. To install tiller in kubernetes
-    1. run `helm init` 
-    2. Apply the role based access config `kubectl apply -f rbac-config.yml` to give access to tiller 
-    3. run `helm init --upgrade --service-account tiller`
+    1. Create a service account 
+       ```
+       kubectl create serviceaccount --namespace kube-system tiller
+       ```
+    2. Create a cluster role binding access for tiller
+       ```
+       kubectl create clusterrolebinding tiller-cluster-rule \
+                --clusterrole=cluster-admin \
+                --serviceaccount=kube-system:tiller
+       ```
+    3. Initialize with the created service account 
+       ```
+       helm init --service-account tiller
+       ```
 
 Now we are ready to install releases from helm charts
 
@@ -52,11 +63,20 @@ helm install --name example-mysql \
 ##### Installing Jenkins
 For detailed instructions visit [jenkins helm charts](https://github.com/helm/charts/tree/master/stable/jenkins)
 ```
-helm install --name example-jenkins \
-    --set master.adminPassword=examplePassword \
-    --set master.ingress.enabled=true \
-    --set master.ingress.hostName=jenkins.example-domain.com \
-    --set 'master.ingress.tls[0].secretName=exampleSecretName' \
-    --set 'master.ingress.tls[0].hosts={jenkins.example-domain.com}' \
-    stable/jenkins
+helm install --name innoventing-jenkins stable/jenkins --values jenkins-values.yml
+```
+
+##### Installing Nginx
+For detailed instructions visit [nginx helm charts](https://github.com/helm/charts/tree/master/stable/nginx-ingress)
+```
+helm install --name nginx-ingress stable/nginx-ingress \
+    --set rbac.create=true \
+    --set controller.publishService.enabled=true \
+    --set controller.service.externalIPs={static IP}
+```
+
+Add below config in application ingress
+```
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 ```
