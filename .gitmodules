@@ -1,3 +1,12 @@
 [submodule "demo-address-service"]
 	path = demo-address-service
 	url = https://github.com/adnanmamajiwala/demo-address-service.git
+[submodule "demo-person-service"]
+	path = demo-person-service
+	url = https://github.com/adnanmamajiwala/demo-person-service.git
+[submodule "demo-employee-app"]
+	path = demo-employee-app
+	url = https://github.com/adnanmamajiwala/demo-employee-app.git
+[submodule "demo-employee-aggregator-service"]
+	path = demo-employee-aggregator-service
+	url = https://github.com/adnanmamajiwala/demo-employee-aggregator-service.git
