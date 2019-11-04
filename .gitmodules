@@ -1,0 +1,3 @@
+[submodule "demo-address-service"]
+	path = demo-address-service
+	url = https://github.com/adnanmamajiwala/demo-address-service.git
